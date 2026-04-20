@@ -137,3 +137,105 @@ body {
 .logo-img {
     width: 260px;
 }
+
+/* ========================= */
+/* RESPONSIVO - TABLET */
+/* ========================= */
+@media (max-width: 1024px) {
+
+    .hero-text h2 {
+        font-size: 32px;
+    }
+
+    .hero-text {
+        max-width: 450px;
+    }
+
+}
+
+/* ========================= */
+/* RESPONSIVO - CELULAR */
+/* ========================= */
+@media (max-width: 768px) {
+
+    /* HEADER */
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav {
+        margin: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* HERO */
+    .hero {
+        height: auto;
+        padding: 120px 0 60px;
+        background-position: center;
+    }
+
+    .overlay {
+        background: linear-gradient(
+            to bottom,
+            #eef1ef 30%,
+            rgba(255,255,255,0.95) 60%,
+            rgba(255,255,255,0) 100%
+        );
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h2 {
+        font-size: 26px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .cta {
+        width: 100%;
+    }
+
+    /* SOBRE */
+    .sobre-content {
+        flex-direction: column;
+    }
+
+    .sobre-left,
+    .sobre-right {
+        width: 100%;
+    }
+
+    /* SERVIÇOS */
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    /* BENEFÍCIOS */
+    .beneficios-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .beneficios-img img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+}
