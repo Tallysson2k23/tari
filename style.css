@@ -172,8 +172,6 @@ body {
 
 .img2 { background-image: url("assets/images/2.png"); height: 180px; flex: 1; }
 .img3 { background-image: url("assets/images/3.png"); height: 180px; flex: 1; }
-.img4 { background-image: url("assets/images/4.png"); width: 150px; height: 130px; }
-.img5 { background-image: url("assets/images/5.png"); width: 150px; height: 130px; }
 
 .resultado-footer {
     text-align: center;
