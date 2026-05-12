@@ -18,7 +18,7 @@ body {
 /* HEADER */
 .header {
     position: absolute;
-    top: 30px;
+    top: 90px;
     width: 100%;
     z-index: 10;
 }
@@ -32,7 +32,7 @@ body {
 
 /* LOGO */
 .logo {
-    width: 110px;
+    width: 300px;
     position: absolute;
     left: 0;
 }
@@ -40,29 +40,33 @@ body {
 /* MENU */
 .nav {
     display: flex;
-    gap: 10px;
-    justify-content: center;
+    gap: 45px;
+justify-content: center;
+padding-left: 300px; /*alinha os botoes de cima do site*/
 }
 
 .nav a {
     background: #4f6f6f;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     color: white;
-    padding: 7px 16px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 3px 39px;
+    border-radius: 10px;
+    font-size: 11px;
     text-decoration: none;
 }
 
 /* HERO */
-.hero {
+.hero { 
     height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
 
-    background: url("assets/images/1.png") no-repeat right center;
-    background-size: cover;
+    background-image: url("assets/images/1.png");
+    background-repeat: no-repeat;
+
+    background-size: 76%;
+    background-position: right center;
 }
 
 /* OVERLAY */
@@ -112,13 +116,20 @@ body {
 }
 
 /* BOTÃO */
-.cta {
+.hero-text{
+    width: 100%;
+}
+
+.cta{
     background: #4f6f6f;
     color: white;
-    padding: 12px 26px;
-    border-radius: 30px;
-    font-size: 13px;
+    padding: 12px 36px;
+    border-radius: 20px;
+    font-size: 22px;
     border: none;
+
+    display: block;
+    margin: 100px auto 0;
 }
 
 /* SOBRE */

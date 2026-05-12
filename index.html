@@ -3,16 +3,577 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tari</title>
 
-<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+RESET GERAL
+Remove margens automáticas do navegador
+========================================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================================================
+CONFIGURAÇÃO BASE DO SITE
+========================================================= */
+body{
+    font-family:'Poppins',sans-serif;
+    background:#eef1ef;
+}
+
+/* =========================================================
+CONTAINER PRINCIPAL
+Centraliza o conteúdo do site
+========================================================= */
+.container{
+    width:1200px;
+    margin:auto;
+}
+
+/* =========================================================
+HEADER / TOPO
+========================================================= */
+.header{
+    position:absolute;
+    top:90px;
+    width:100%;
+    z-index:10;
+}
+
+/* área interna do topo */
+.header-content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+/* =========================================================
+LOGO
+========================================================= */
+.logo{
+    width:300px;
+    position:absolute;
+    left:0;
+}
+
+/* =========================================================
+MENU SUPERIOR
+========================================================= */
+.nav{
+    display:flex;
+    gap:45px;
+
+    justify-content:center;
+
+    /* move os botões mais para direita */
+    padding-left:300px;
+}
+
+/* BOTÕES DO MENU */
+.nav a{
+    background:#4f6f6f;
+    color:white;
+
+    text-decoration:none;
+
+    padding:3px 39px;
+
+    border-radius:10px;
+
+    font-size:11px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* =========================================================
+SEÇÃO HERO
+========================================================= */
+.hero{
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    background-image:url("assets/images/1.png");
+    background-repeat:no-repeat;
+
+    background-size:76%;
+    background-position:right center;
+}
+
+/* camada branca transparente em cima da imagem */
+.overlay{
+    position:absolute;
+
+    width:40%;
+    height:100%;
+
+    background:linear-gradient(
+        to right,
+        #eef1ef 35%,
+        rgba(238,241,239,0.85) 50%,
+        rgba(238,241,239,0.4) 65%,
+        transparent 80%
+    );
+}
+
+/* conteúdo interno da hero */
+.hero-content{
+    display:flex;
+    align-items:center;
+
+    width:1200px;
+    margin:auto;
+
+    position:relative;
+    z-index:2;
+}
+
+/* =========================================================
+TEXTO PRINCIPAL HERO
+========================================================= */
+
+/* BLOCO TODO DO TEXTO */
+.hero-text{
+
+    /* largura da área do texto */
+    width:520px;
+
+    /* empurra um pouco pra direita */
+    margin-left:20px;
+
+    /* garante que fique acima do overlay */
+    position:relative;
+    z-index:2;
+
+     /* DESCE O BLOCO */
+    margin-top:190px;
+}
+
+/* =========================================================
+TÍTULO PRINCIPAL
+========================================================= */
+.hero-text h1{
+
+    /* tamanho do título */
+    font-size:38px;
+
+    /* grossura da fonte */
+    font-weight:600;
+
+    /* espaçamento entre linhas */
+    line-height:1.15;
+
+    /* cor do texto */
+    color:#4f6f6f;
+
+    /* espaço abaixo do título */
+    margin-bottom:28px;
+
+    /* largura máxima do texto */
+    max-width:540px;
+
+    /* distância da esquerda */
+    letter-spacing:-1px;
+}
+
+/* =========================================================
+PARÁGRAFO ABAIXO
+========================================================= */
+.hero-text p{
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    color:#6b6b6b;
+
+    max-width:430px;
+
+    margin-bottom:40px;
+
+    font-weight:400;
+}
+
+/* =========================================================
+BOTÃO PRINCIPAL HERO
+========================================================= */
+
+/*
+SE VOCÊ QUISER MEXER SOMENTE NESSE BOTÃO,
+ALTERE APENAS A CLASSE .cta
+*/
+.cta{
+
+    background:#4f6f6f;
+    color:white;
+
+    border:none;
+
+    padding:12px 36px;
+
+    border-radius:20px;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    /* MOVE HORIZONTALMENTE */
+    left:500px;
+
+    /* DISTÂNCIA DO TEXTO */
+    margin-top:10px;
+}
+/* =========================================================
+SEÇÃO SOBRE
+========================================================= */
+.sobre{
+    padding:120px 0;
+}
+
+.sobre-box{
+    background:white;
+
+    padding:70px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    gap:60px;
+}
+
+/* linha vertical */
+.divider{
+    width:1px;
+    background:#ddd;
+}
+
+/* linha horizontal */
+.line{
+    height:1px;
+    background:#ddd;
+
+    margin:20px 0;
+}
+
+/* =========================================================
+SEÇÃO RESULTADOS
+========================================================= */
+.resultado{
+    background:#4f6f6f;
+
+    padding:100px 0;
+
+    color:white;
+}
+
+.resultado-box{
+    display:flex;
+    gap:50px;
+}
+
+/* topo das imagens */
+.grid-top{
+    display:flex;
+    gap:15px;
+}
+
+/* parte inferior das imagens */
+.grid-bottom{
+    display:flex;
+    gap:15px;
+
+    margin-top:15px;
+
+    align-items:center;
+}
+
+/* =========================================================
+IMAGENS
+========================================================= */
+
+/*
+classe base de TODAS imagens da seção resultado
+*/
+.img{
+    border-radius:20px;
+
+    background-size:cover;
+    background-position:center;
+}
+
+/*
+imagem individual 2
+*/
+.img2{
+    background-image:url("assets/images/2.png");
+
+    height:180px;
+
+    flex:1;
+}
+
+/*
+imagem individual 3
+*/
+.img3{
+    background-image:url("assets/images/3.png");
+
+    height:180px;
+
+    flex:1;
+}
+
+/* =========================================================
+RODAPÉ DA SEÇÃO RESULTADO
+========================================================= */
+.resultado-footer{
+    text-align:center;
+
+    margin-top:50px;
+}
+
+/* seta verde */
+.arrow{
+    width:20px;
+    height:20px;
+
+    border-bottom:4px solid #7cffb2;
+    border-right:4px solid #7cffb2;
+
+    transform:rotate(45deg);
+
+    margin:10px auto;
+}
+
+/* =========================================================
+SEÇÃO MÉTRICAS
+========================================================= */
+.metricas{
+    padding:100px 0;
+
+    text-align:center;
+}
+
+.metricas-text{
+    margin-bottom:40px;
+}
+
+.metricas-cards img{
+    width:260px;
+
+    margin:10px;
+
+    border-radius:15px;
+}
+
+/* =========================================================
+SEÇÃO SERVIÇOS
+========================================================= */
+.servicos{
+    padding:80px 0;
+
+    text-align:center;
+}
+
+.servicos-grid{
+    display:flex;
+
+    gap:20px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+}
+
+/* card individual */
+.servico{
+    background:white;
+
+    width:200px;
+
+    padding:20px;
+
+    border-radius:15px;
+}
+
+/* =========================================================
+SEÇÃO BENEFÍCIOS
+========================================================= */
+.beneficios{
+    background:#4f6f6f;
+
+    color:white;
+
+    padding:100px 0;
+}
+
+.beneficios-box{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+/* imagem da direita */
+.beneficios-img{
+    width:280px;
+    height:300px;
+
+    background:url("assets/images/5.png") center/cover no-repeat;
+
+    border-radius:25px;
+}
+
+/* =========================================================
+RESPONSIVO TABLET
+========================================================= */
+@media(max-width:1024px){
+
+    .container{
+        width:90%;
+    }
+
+    .hero-text h1{
+        font-size:38px;
+    }
+
+    .header-content{
+        width:1200px;
+        margin:auto;
+    }
+
+    .hero-content{
+        width:90%;
+    }
+
+    .sobre-box{
+        flex-direction:column;
+
+        gap:30px;
+
+        padding:40px;
+    }
+
+    .resultado-box{
+        flex-direction:column;
+    }
+
+}
+
+/* =========================================================
+RESPONSIVO MOBILE
+========================================================= */
+@media(max-width:768px){
+
+    .nav{
+        display:none;
+    }
+
+    .header{
+        top:20px;
+    }
+
+    .logo{
+        width:100px;
+    }
+
+    .hero{
+        height:auto;
+
+        padding:120px 0 60px;
+    }
+
+    .hero-content{
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:30px;
+    }
+
+    .hero-text h1{
+        font-size:28px;
+    }
+
+    .hero-text p{
+        font-size:14px;
+    }
+
+    .cta{
+        padding:12px 22px;
+
+        font-size:13px;
+    }
+
+    .sobre{
+        padding:80px 0;
+    }
+
+    .sobre-box{
+        padding:30px;
+    }
+
+    .grid-top,
+    .grid-bottom{
+        flex-direction:column;
+    }
+
+    .img2,
+    .img3{
+        height:160px;
+    }
+
+    .beneficios-box{
+        flex-direction:column;
+
+        gap:30px;
+
+        text-align:center;
+    }
+}
+
+/* =========================================================
+MOBILE PEQUENO
+========================================================= */
+@media(max-width:480px){
+
+    .hero-text h1{
+        font-size:24px;
+    }
+
+    .cta{
+        width:100%;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- =====================================================
+HEADER
+===================================================== -->
 <header class="header">
+
     <div class="container header-content">
+
         <img src="assets/images/logo.png" class="logo">
 
         <nav class="nav">
@@ -21,18 +582,27 @@
             <a href="#">Sobre nós</a>
             <a href="#">Contato</a>
         </nav>
+
     </div>
+
 </header>
 
-<!-- HERO -->
+<!-- =====================================================
+HERO
+===================================================== -->
 <section class="hero">
+
     <div class="overlay"></div>
 
     <div class="container hero-content">
 
         <div class="hero-text">
+
             <h1>
-                Transformamos ideias em resultados que fazem sua marca crescer.
+                Transformamos<br>
+                ideias em resultados <br>
+                que fazem sua marca<br>
+                crescer.
             </h1>
 
             <p>
@@ -44,139 +614,60 @@
             <button class="cta">
                 Quero impulsionar minha marca agora.
             </button>
+
         </div>
 
-        
-
     </div>
+
 </section>
 
-<!-- SOBRE -->
+<!-- =====================================================
+SOBRE
+===================================================== -->
 <section class="sobre">
+
     <div class="container sobre-box">
 
         <div class="sobre-left">
+
             <h2>Conheça a Tari</h2>
+
             <p>
                 A TARI é formada por uma equipe de profissionais qualificados em Comunicação,
                 Marketing e áreas estratégicas, preparados para transformar ideias em resultados.
             </p>
+
         </div>
 
         <div class="divider"></div>
 
         <div class="sobre-right">
+
             <div class="info">
+
                 <h3>Missão</h3>
+
                 <p>
                     Conectar marcas e pessoas através de estratégias inteligentes,
                     gerando resultados consistentes e duradouros.
                 </p>
+
             </div>
 
             <div class="line"></div>
 
             <div class="info">
+
                 <h3>Diferencial</h3>
+
                 <p>
                     Somos especialistas em vários segmentos e levamos estratégia e criatividade
                     a negócios de diferentes áreas.
                 </p>
-            </div>
-        </div>
 
-    </div>
-</section>
-
-<!-- RESULTADO -->
-<section class="resultado">
-
-    <div class="container resultado-box">
-
-        <div class="resultado-left">
-            <h3>
-                Quando o conteúdo é feito com estratégia,<br>
-                ele sai disso
-            </h3>
-        </div>
-
-        <div class="resultado-right">
-
-            <div class="grid-top">
-                <div class="img img2"></div>
-                <div class="img img3"></div>
-            </div>
-
-            <div class="grid-bottom">
-                <div class="img img4"></div>
-                <div class="img img5"></div>
-
-                <p>
-                    Para isso: transformamos o feed de uma simples grade de fotos em um canal estratégico que conecta, fortalece a autoridade e cria uma identidade visual consistente.
-                </p>
             </div>
 
         </div>
-
-    </div>
-
-    <div class="resultado-footer">
-        <h2>E o resultado aparece</h2>
-        <div class="arrow"></div>
-    </div>
-
-</section>
-
-<!-- MÉTRICAS -->
-<section class="metricas">
-    <div class="container metricas-box">
-
-        <p class="metricas-text">
-            Esses números são de perfis diferentes, com objetivos diferentes, mas com uma coisa em comum:
-            <strong>planejamento e constância.</strong>
-        </p>
-
-        <div class="metricas-cards">
-            <img src="assets/images/4.png">
-            <img src="assets/images/4.png">
-        </div>
-
-    </div>
-</section>
-
-<!-- SERVIÇOS -->
-<section class="servicos">
-    <h2>Serviços</h2>
-
-    <div class="servicos-grid">
-        <div class="servico">Campanhas Publicitárias</div>
-        <div class="servico">Social Media</div>
-        <div class="servico">Criação de Conteúdo Estratégico</div>
-        <div class="servico">E-commerce</div>
-        <div class="servico">Sites Institucionais</div>
-    </div>
-</section>
-
-<!-- BENEFICIOS -->
-<section class="beneficios">
-
-    <div class="container beneficios-box">
-
-        <div class="beneficios-text">
-            <h2>Benefícios</h2>
-
-            <p><strong>Você é parceiro de crescimento.</strong></p>
-
-            <ul>
-                <li>Caminhamos junto com você</li>
-                <li>Transformamos comunicação em vendas</li>
-                <li>Cuidamos da sua marca</li>
-                <li>Estratégia contínua</li>
-                <li>Fazemos com energia</li>
-            </ul>
-        </div>
-
-        <div class="beneficios-img"></div>
 
     </div>
 
